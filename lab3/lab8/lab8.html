@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">图片切换</div>
+            <div class="panel-body" style="overflow:hidden">
+                <img src="1.jpg" id="img1" />
+            </div>
+        </div>
+        <button type="button" class="btn btn-default " onclick="changeImage(1)" id="bt1">图片一</button>
+        <button type="button" class="btn btn-default " onclick="changeImage(2)" id="bt2">图片二</button>
+        <button type="button" class="btn btn-default " onclick="changeImage(3)" id="bt3">图片三</button>
+    </div>
+
+    <div class="container" style="padding:20px 15px;">
+        <div class="panel panel-default" style="margin:0px;">
+            <div class="panel-heading">
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active" id="home"><a href="javascript:void(0);" onclick="changeDetail('home')">Home</a></li>
+                    <li role="presentation" class="" id="profile"><a href="javascript:void(0);" onclick="changeDetail('profile')">Profile</a></li>
+
+                </ul>
+            </div>
+            <div class="panel-body" style="padding:0px;">
+                <p id="detail" style="padding:0px;">
+                    Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.;
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="padding:20px 15px;">
+        <div class="panel panel-default" >
+            <div class="panel-heading" style="padding:0px;">
+                <div class="alert alert-info" role="alert" style="margin:0px;"><p>jQuery之简单的表单验证</p></div> 
+            </div>
+            <div class="panel-body" style="padding:0px;">
+                <div style="width:300px; margin:0 auto;padding:5px;">
+                    <form method="post" action="">
+                        <div class="int form-group">
+                            <label for="username">用户名:</label>
+                            <!-- 为每个需要的元素添加required -->
+                            <input type="text" id="username" class="required form-control" />
+                        </div>
+                        <div class="int form-group">
+                            <label for="email">邮箱:</label>
+                            <input type="text" id="email" class="required form-control" />
+                        </div>
+                        <div class="int form-group">
+                            <label for="personinfo">个人资料:</label>
+                            <input type="text" id="personinfo" class="form-control"/>
+                        </div>
+                        <div class="sub form-group">
+                            <input class="btn btn-primary" type="submit" value="提交" id="send" />
+                            <input class="btn btn-primary" type="reset" id="res" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/jquery-3.3.1.js"></script>
+    <script>
+        function changeImage(type) {
+            $("#img1").attr("src", type + ".jpg");
+            $("button").removeClass("active").css("color", "black");
+            $("#bt" + type).addClass("active").css("color", "red");
+        }
+        function changeDetail(type) {
+            var str1 = "Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.";
+            var str2 = "Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.";
+            $("li").removeClass("active");
+            $("#" + type).addClass("active");
+            if (type == "home") {
+                $("#detail").html(str1);
+            }
+            else {
+                $("#detail").html(str2);
+            }
+
+        }
+
+
+        //<![CDATA[
+        $(function () {
+            /*
+            *思路大概是先为每一个required添加必填的标记，用each()方法来实现。
+            *在each()方法中先是创建一个元素。然后通过append()方法将创建的元素加入到父元素后面。
+            *这里面的this用的很精髓，每一次的this都对应着相应的input元素，然后获取相应的父元素。
+            *然后为input元素添加失去焦点事件。然后进行用户名、邮件的验证。
+            *这里用了一个判断is()，如果是用户名，做相应的处理，如果是邮件做相应的验证。
+            *在jQuery框架中，也可以适当的穿插一写原汁原味的javascript代码。比如验证用户名中就有this.value，和this.value.length。对内容进行判断。
+            *然后进行的是邮件的验证，貌似用到了正则表达式。
+            *然后为input元素添加keyup事件与focus事件。就是在keyup时也要做一下验证，调用blur事件就行了。用triggerHandler()触发器，触发相应的事件。
+            *最后提交表单时做统一验证
+            *做好整体与细节的处理
+            */
+            //如果是必填的，则加红星标识.
+            $("form :input.required").each(function () {
+                var $required = $("<strong class='high text-danger'> *</strong>"); //创建元素
+                $(this).parent().append($required); //然后将它追加到文档中
+            });
+            //文本框失去焦点后
+            $('form :input').blur(function () {
+                var $parent = $(this).parent();
+                $parent.find(".formtips").remove();
+                //验证用户名
+                if ($(this).is('#username')) {
+                    if (this.value == "" || this.value.length < 6) {
+                        var errorMsg = '请输入至少6位的用户名.';
+                        $parent.append('<span class="formtips onError text-danger">' + errorMsg + '</span>');
+                    } else {
+                        var okMsg = '输入正确.';
+                        $parent.append('<span class="formtips onSuccess text-success">' + okMsg + '</span>');
+                    }
+                }
+                //验证邮件
+                if ($(this).is('#email')) {
+                    if (this.value == "" || (this.value != "" && !/.+@.+\.[a-zA-Z]{2,4}$/.test(this.value))) {
+                        var errorMsg = '请输入正确的E-Mail地址.';
+                        $parent.append('<span class="formtips onError text-danger">' + errorMsg + '</span>');
+                    } else {
+                        var okMsg = '输入正确.';
+                        $parent.append('<span class="formtips onSuccess text-success">' + okMsg + '</span>');
+                    }
+                }
+            }).keyup(function () {
+                $(this).triggerHandler("blur");
+            }).focus(function () {
+                $(this).triggerHandler("blur");
+            });//end blur
+            //提交，最终验证。
+            $('#send').click(function () {
+                $("form :input.required").trigger('blur');
+                var numError = $('form .onError').length;
+                if (numError) {
+                    return false;
+                }
+                alert("注册成功,密码已发到你的邮箱,请查收.");
+            });
+            //重置
+            $('#res').click(function () {
+                $(".formtips").remove();
+            });
+        })
+        //]]>
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    List<lab3.Models.T_Shop_Category> tmp = ViewBag.lst;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        header {
+            height: 40px;
+            background: red;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        footer {
+            height: 40px;
+            background: red;
+            line-height: 40px;
+            text-align: center;
+            position: fixed;
+            bottom: 0px;
+            width: 100%;
+        }
+
+        #ad img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <header>2018商城</header>
+        <div id="ad">
+            <img src="~/Content/2.jpg" />
+        </div>
+        <div class="row">
+            @{
+                foreach (lab3.Models.T_Shop_Category item in tmp)
+                {
+                    <div class="col-md-4">
+                        @item.CategoryName
+                    </div>
+                }
+            }
+
+        </div>
+        <footer>版本所有</footer>
+    </div>
+</body>
+</html>
+
+
+

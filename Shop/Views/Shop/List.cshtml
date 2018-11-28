@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Shop.Models.T_Shop_Product> tmp = ViewBag.lst;
+}
+
+<div style="padding:20px">
+    @{ 
+        foreach(Shop.Models.T_Shop_Product item in tmp)
+        {
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" style="width:64px;height:80px" src="~/Content/@item.PicUrl" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">@item.ProductName</h4>
+                    <br />
+                    ￥@item.price &nbsp;&nbsp;&nbsp; 已售：@item.SelledAmount 件
+                </div>
+            </div>
+        }
+    }
+</div>
+

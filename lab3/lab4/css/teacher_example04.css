@@ -1,0 +1,102 @@
+﻿* {
+    padding: 0px; /*元素盒子留白为0*/
+    margin: 0px; /*元素与元素之间边距为0*/
+}
+
+body {
+}
+
+header {
+    font-size: 20px; /*字体大小*/
+    font-weight: 700; /*字体加粗*/
+    position: fixed; /*位置相对浏览器固定*/
+    top: 0px; /*坐标top的值*/
+    height: 40px; /*元素的高度*/
+    width: 100%; /*宽度*/
+    background: #9f0a0a; /*背景颜色*/
+    color: white; /*文字颜色*/
+    text-align: center; /*文字在区域中对齐方式居中*/
+    line-height: 40px; /*区域中文字行高为40px，目的实现文字垂直居中*/
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    height: 40px;
+    background: #9f0a0a;
+    width: 100%;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+}
+
+#ad img {
+    width: 100%;
+}
+
+#list ul {
+    list-style-type: none;
+}
+
+    #list ul li {
+        border-bottom: 1px solid #ddd8ce;
+        margin: 0px;
+        position: relative; /*相对定位*/
+    }
+
+
+.li-img-block {
+    position: absolute; /*显示文块是绝对定位*/
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    overflow: hidden; /*超出部分隐藏*/
+}
+
+    .li-img-block img {
+        width: 100%;
+        height: 100%;
+    }
+
+.li-content-block {
+    margin-left: 94px; /*左边界94px*/
+}
+
+.text-block {
+    height: 28px;
+    font-size: 12px;
+    word-break: break-word; /*换行*/
+    display: -webkit-box; /*显示模式*/
+    -webkit-line-clamp: 2; /*超出两行后面加……*/
+    -webkit-box-orient: vertical; /*手机内核支持的浏览器，元素排列方式*/
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.single-line {
+    overflow:hidden;
+    text-overflow: ellipsis; /*文本显示方式为不换行，超出的部分显示...*/
+    white-space:nowrap;
+    margin-bottom:6px;
+}
+
+.line-right {
+    position: absolute;
+    bottom: .04rem;
+    right:5px;
+}
+
+.blue {
+    color:blue;
+}
+
+footer ul li{
+    box-sizing:border-box;
+    width:25%;
+    height:40px;
+    border: 1px solid #efeff0;
+    float:left;
+    list-style:none;
+    text-align:center;
+    color:white;
+}

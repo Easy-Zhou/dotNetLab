@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="T_Shop_Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PicUrl" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="T_Shop_Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PicUrl" Type="nvarchar" MaxLength="50" />
+    <Property Name="price" Type="nchar" MaxLength="10" />
+    <Property Name="StockAmount" Type="int" />
+    <Property Name="SelledAmount" Type="int" />
+    <Property Name="CategoryId" Type="int" />
+  </EntityType>
+  <Association Name="FK_T_Shop_Product_ToTable">
+    <End Role="T_Shop_Category" Type="Self.T_Shop_Category" Multiplicity="0..1" />
+    <End Role="T_Shop_Product" Type="Self.T_Shop_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Shop_Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="T_Shop_Product">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="T_Shop_Category" EntityType="Self.T_Shop_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Shop_Product" EntityType="Self.T_Shop_Product" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_T_Shop_Product_ToTable" Association="Self.FK_T_Shop_Product_ToTable">
+      <End Role="T_Shop_Category" EntitySet="T_Shop_Category" />
+      <End Role="T_Shop_Product" EntitySet="T_Shop_Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

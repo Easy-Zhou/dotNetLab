@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="T_Shop_Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PicUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="T_Shop_Product" Relationship="Self.FK_T_Shop_Product_ToTable" FromRole="T_Shop_Category" ToRole="T_Shop_Product" />
+  </EntityType>
+  <EntityType Name="T_Shop_Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PicUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="StockAmount" Type="Int32" />
+    <Property Name="SelledAmount" Type="Int32" />
+    <Property Name="CategoryId" Type="Int32" />
+    <NavigationProperty Name="T_Shop_Category" Relationship="Self.FK_T_Shop_Product_ToTable" FromRole="T_Shop_Product" ToRole="T_Shop_Category" />
+  </EntityType>
+  <Association Name="FK_T_Shop_Product_ToTable">
+    <End Role="T_Shop_Category" Type="Self.T_Shop_Category" Multiplicity="0..1" />
+    <End Role="T_Shop_Product" Type="Self.T_Shop_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Shop_Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="T_Shop_Product">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="T_Shop_Category" EntityType="Self.T_Shop_Category" />
+    <EntitySet Name="T_Shop_Product" EntityType="Self.T_Shop_Product" />
+    <AssociationSet Name="FK_T_Shop_Product_ToTable" Association="Self.FK_T_Shop_Product_ToTable">
+      <End Role="T_Shop_Category" EntitySet="T_Shop_Category" />
+      <End Role="T_Shop_Product" EntitySet="T_Shop_Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

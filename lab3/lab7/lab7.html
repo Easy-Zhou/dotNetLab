@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+    <link href="/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">图片切换</div>
+            <div class="panel-body">
+                <img src="1.jpg" id="img1" />
+            </div>
+        </div>
+        <button type="button" class="btn btn-default " onclick="changeImage(1)" id="bt1">图片一</button>
+        <button type="button" class="btn btn-default " onclick="changeImage(2)" id="bt2">图片二</button>
+        <button type="button" class="btn btn-default " onclick="changeImage(3)" id="bt3">图片三</button>
+    </div>
+
+    <div class="container" style="padding:20px 15px;">
+        <div class="panel panel-default" style="margin:0px;">
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active" id="home"><a href="javascript:void(0);" onclick="changeDetail(1)">Home</a></li>
+                <li role="presentation" class="" id="profile"><a href="javascript:void(0);" onclick="changeDetail(2)">Profile</a></li>
+
+            </ul>
+        </div>
+        <div class="panel-body" style="padding:0px;">
+            <p id="detail" style="padding:0px;">
+                Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.;
+            </p>
+        </div>
+    </div>
+    <script>
+        function changeImage(j) {
+            var img = document.getElementById("img1");
+            var lstElement = document.querySelectorAll("button");
+            img.src = j + ".jpg";
+            for (i = 0; i < lstElement.length; i++) {
+                if (j-1 == i) {
+                    lstElement[i].className = "btn btn-default active";
+                    lstElement[i].style.color = "red";
+                }
+                else {
+                    lstElement[i].className = "btn btn-default ";
+                    lstElement[i].style.color = "black";
+                }
+            }
+
+            
+        }
+        function changeDetail(i) {
+            var home = document.getElementById("home");
+            var profile = document.getElementById("profile");
+            var detail = document.getElementById("detail");
+            if (i == 1) {
+                home.className = "active";
+                profile.className = "";
+                detail.innerHTML = "Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.";
+            }
+            else {
+                home.className = "";
+                profile.className = "active";
+                detail.innerHTML = "Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.";
+            }
+
+        }
+    </script>
+</body>
+</html>
