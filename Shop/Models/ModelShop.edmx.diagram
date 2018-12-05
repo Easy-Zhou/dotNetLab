@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="Model.T_Shop_Category" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.T_Shop_Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="Model.FK_T_Shop_Product_ToTable" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.T_Base_User" Width="1.5" PointX="6" PointY="1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

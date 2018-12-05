@@ -176,6 +176,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelShop.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\T_Base_User.cs">
+      <DependentUpon>ModelShop.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\T_Shop_Category.cs">
       <DependentUpon>ModelShop.tt</DependentUpon>
     </Compile>
@@ -251,6 +254,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_AD.cshtml" />
     <Content Include="Views\Shop\List.cshtml" />
+    <Content Include="Views\Shop\Register.cshtml" />
+    <Content Include="Views\Shop\RegisterSave.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

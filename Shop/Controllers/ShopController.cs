@@ -26,5 +26,24 @@ namespace Shop.Controllers
             ViewBag.lst = lst; 
             return View();
         }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        public ActionResult RegisterSave(string Username, string Password, string Realname, string Email)
+        {
+            Shop.Models.ShopEntities db = new Models.ShopEntities();
+            Shop.Models.T_Base_User user = new Models.T_Base_User();
+            user.Username = Username;
+            user.Password = Password;
+            user.Realname = Realname;
+            user.Email = Email;
+            user.type = 0;
+            db.T_Base_User.Add(user);
+            db.SaveChanges();
+            return View();
+        }
     }
 }

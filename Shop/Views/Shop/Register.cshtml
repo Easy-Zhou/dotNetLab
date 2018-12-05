@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "用户注册";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form action="/shop/registersave" style="padding:20px">
+    <div class="form-group">
+        <label for="Username">User Name</label>
+        <input type="text" class="form-control" id="Username" name="Username" placeholder="登录名">
+    </div>
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="password" class="form-control" id="Password" name="Password" placeholder="***">
+    </div>
+    <div class="form-group">
+        <label for="Realname">RealName</label>
+        <input type="text" class="form-control" id="Realname" name="Realname" placeholder="姓名">
+    </div>
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="text" class="form-control" id="Email" name="Email" placeholder="Email">
+    </div>
+
+    <button type="submit" class="btn btn-default" style="margin:0 auto">Submit</button>
+</form>
+
+

@@ -41,5 +41,17 @@
       <End Role="T_Shop_Category" EntitySet="T_Shop_Category" />
       <End Role="T_Shop_Product" EntitySet="T_Shop_Product" />
     </AssociationSet>
+    <EntitySet Name="T_Base_User" EntityType="Model.T_Base_User" />
   </EntityContainer>
+  <EntityType Name="T_Base_User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="Realname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="type" Type="Int32" />
+  </EntityType>
 </Schema>

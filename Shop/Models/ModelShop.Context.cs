@@ -27,5 +27,6 @@ namespace Shop.Models
     
         public virtual DbSet<T_Shop_Category> T_Shop_Category { get; set; }
         public virtual DbSet<T_Shop_Product> T_Shop_Product { get; set; }
+        public virtual DbSet<T_Base_User> T_Base_User { get; set; }
     }
 }
