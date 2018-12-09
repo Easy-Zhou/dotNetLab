@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "商品详情";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Shop.Models.T_Shop_Product product = ViewBag.item;
+}
+
+<div>
+    <img style="height:320px"  src="~/Content/@product.PicUrl" />
+</div>
+<div>
+    <p>@product.ProductName</p>
+    <p>@product.price</p>
+</div>
+
+

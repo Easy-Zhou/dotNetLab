@@ -27,23 +27,13 @@ namespace Shop.Controllers
             return View();
         }
 
-        public ActionResult Register()
+        public ActionResult Detail(int Id=1)
         {
+            Shop.Models.ShopEntities db = new Models.ShopEntities();
+            Shop.Models.T_Shop_Product product = db.T_Shop_Product.Single(m => m.Id == Id);
+            ViewBag.item = product;
             return View();
         }
 
-        public ActionResult RegisterSave(string Username, string Password, string Realname, string Email)
-        {
-            Shop.Models.ShopEntities db = new Models.ShopEntities();
-            Shop.Models.T_Base_User user = new Models.T_Base_User();
-            user.Username = Username;
-            user.Password = Password;
-            user.Realname = Realname;
-            user.Email = Email;
-            user.type = 0;
-            db.T_Base_User.Add(user);
-            db.SaveChanges();
-            return View();
-        }
     }
 }

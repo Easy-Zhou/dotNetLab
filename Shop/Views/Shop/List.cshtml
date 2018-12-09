@@ -5,13 +5,13 @@
     List<Shop.Models.T_Shop_Product> tmp = ViewBag.lst;
 }
 
-<div style="padding:20px">
+<div style="padding:5px">
     @{ 
         foreach(Shop.Models.T_Shop_Product item in tmp)
         {
             <div class="media">
                 <div class="media-left">
-                    <a href="#">
+                    <a href="/shop/detail?Id=@item.Id">
                         <img class="media-object" style="width:64px;height:80px" src="~/Content/@item.PicUrl" alt="...">
                     </a>
                 </div>

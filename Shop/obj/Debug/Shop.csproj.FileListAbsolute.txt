@@ -102,6 +102,8 @@ D:\Code\Web\net\lab3\Shop\obj\Debug\Shop.dll
 D:\Code\Web\net\lab3\Shop\obj\Debug\Shop.pdb
 D:\Code\Web\net\lab3\Shop\bin\roslyn\System.Collections.Immutable.dll
 D:\Code\Web\net\lab3\Shop\bin\roslyn\System.IO.FileSystem.dll
+D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.ValueTuple.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\ApplicationInsights.config
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\Shop.dll.config
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\Shop.dll
@@ -132,7 +134,6 @@ D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.Diagnostics.StackTrace.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.IO.Compression.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.IO.FileSystem.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
-D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.IO.FileSystem.Primitives.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.IO.Pipes.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.Reflection.Metadata.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.Security.AccessControl.dll
@@ -144,7 +145,6 @@ D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.Security.Cryptography.X509
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.Security.Principal.Windows.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.Text.Encoding.CodePages.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.Threading.Thread.dll
-D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.ValueTuple.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.Xml.ReaderWriter.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.Xml.XmlDocument.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.Xml.XPath.dll
@@ -202,8 +202,8 @@ D:\Code\Web\net\lab3\dotNetLab\Shop\bin\zh-Hans\System.Web.Razor.resources.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\zh-Hans\System.Web.WebPages.resources.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
-D:\Code\Web\net\lab3\dotNetLab\Shop\obj\Debug\Shop.csprojAssemblyReference.cache
 D:\Code\Web\net\lab3\dotNetLab\Shop\obj\Debug\Shop.csproj.CoreCompileInputs.cache
 D:\Code\Web\net\lab3\dotNetLab\Shop\obj\Debug\Shop.csproj.CopyComplete
 D:\Code\Web\net\lab3\dotNetLab\Shop\obj\Debug\Shop.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\obj\Debug\Shop.pdb
+D:\Code\Web\net\lab3\dotNetLab\Shop\obj\Debug\Shop.csprojAssemblyReference.cache

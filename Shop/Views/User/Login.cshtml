@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "用户登陆";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="padding:20px">
+    <div class="form-group">
+        <label for="Username">User Name</label>
+        <input type="text" class="form-control" id="Username" name="Username" placeholder="登录名">
+    </div>
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="password" class="form-control" id="Password" name="Password" placeholder="***">
+    </div>
+
+    <button type="button" class="btn btn-default" style="margin:0 auto" onclick="check()">登录</button>
+</div>
+<div style="text-align:center">
+    <a href="/user/register">注册新用户</a>
+</div>
+
+@section javascript{
+    <script>
+        function check() {
+            var username = $("#Username").val();
+            var password = $("#Password").val();
+            $.ajax({
+                url: "/user/logincheck",
+                data: { Username: username, Password: password },
+                async: true,
+                type: "POST",
+                success: function (result) {
+                    if (result.code == 1) {
+                        alert("登录成功！")
+                        location.href = "/shop/index";
+                    }
+                    else {
+                        alert("登录失败，密码或用户名错误");
+                    }
+                }
+            });
+        }
+
+    </script>    
+}
