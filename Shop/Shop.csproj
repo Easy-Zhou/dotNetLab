@@ -203,7 +203,9 @@
     <Content Include="Content\img\fengyi.jpg" />
     <Content Include="Content\img\ipadpro.jpg" />
     <Content Include="Content\img\iphonexs.jpg" />
+    <Content Include="Content\img\kuzi.jpg" />
     <Content Include="Content\img\shuma.jpg" />
+    <Content Include="Content\img\xiezi.jpg" />
     <Content Include="Content\img\yifu.jpg" />
     <Content Include="Content\sb_template\.gitignore" />
     <Content Include="Content\sb_template\data\flot-data.js" />
@@ -400,6 +402,7 @@
     <Content Include="Content\sb_template\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\sb_template\vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Areas\admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Category\Add.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
