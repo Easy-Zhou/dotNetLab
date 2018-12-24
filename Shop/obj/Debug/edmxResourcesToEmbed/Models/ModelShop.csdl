@@ -21,6 +21,7 @@
     <Property Name="SelledAmount" Type="Int32" />
     <Property Name="CategoryId" Type="Int32" />
     <NavigationProperty Name="T_Shop_Category" Relationship="Self.FK_T_Shop_Product_ToTable" FromRole="T_Shop_Product" ToRole="T_Shop_Category" />
+    <NavigationProperty Name="T_Shop_Cart" Relationship="Model.FK_T_Shop_Cart_ToTable_Product" FromRole="T_Shop_Product" ToRole="T_Shop_Cart" />
   </EntityType>
   <Association Name="FK_T_Shop_Product_ToTable">
     <End Role="T_Shop_Category" Type="Self.T_Shop_Category" Multiplicity="0..1" />
@@ -42,6 +43,20 @@
       <End Role="T_Shop_Product" EntitySet="T_Shop_Product" />
     </AssociationSet>
     <EntitySet Name="T_Base_User" EntityType="Model.T_Base_User" />
+    <EntitySet Name="T_Base_Address" EntityType="Model.T_Base_Address" />
+    <EntitySet Name="T_Shop_Cart" EntityType="Model.T_Shop_Cart" />
+    <AssociationSet Name="FK_T_Base_Address_ToTable" Association="Model.FK_T_Base_Address_ToTable">
+      <End Role="T_Base_User" EntitySet="T_Base_User" />
+      <End Role="T_Base_Address" EntitySet="T_Base_Address" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_Shop_Cart_ToTable_User" Association="Model.FK_T_Shop_Cart_ToTable_User">
+      <End Role="T_Base_User" EntitySet="T_Base_User" />
+      <End Role="T_Shop_Cart" EntitySet="T_Shop_Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_Shop_Cart_ToTable_Product" Association="Model.FK_T_Shop_Cart_ToTable_Product">
+      <End Role="T_Shop_Product" EntitySet="T_Shop_Product" />
+      <End Role="T_Shop_Cart" EntitySet="T_Shop_Cart" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="T_Base_User">
     <Key>
@@ -53,5 +68,63 @@
     <Property Name="Realname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="type" Type="Int32" />
+    <NavigationProperty Name="T_Base_Address" Relationship="Model.FK_T_Base_Address_ToTable" FromRole="T_Base_User" ToRole="T_Base_Address" />
+    <NavigationProperty Name="T_Shop_Cart" Relationship="Model.FK_T_Shop_Cart_ToTable_User" FromRole="T_Base_User" ToRole="T_Shop_Cart" />
   </EntityType>
+  <EntityType Name="T_Base_Address">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="T_Base_User" Relationship="Model.FK_T_Base_Address_ToTable" FromRole="T_Base_Address" ToRole="T_Base_User" />
+  </EntityType>
+  <EntityType Name="T_Shop_Cart">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="Count" Type="Int32" />
+    <NavigationProperty Name="T_Base_User" Relationship="Model.FK_T_Shop_Cart_ToTable_User" FromRole="T_Shop_Cart" ToRole="T_Base_User" />
+    <NavigationProperty Name="T_Shop_Product" Relationship="Model.FK_T_Shop_Cart_ToTable_Product" FromRole="T_Shop_Cart" ToRole="T_Shop_Product" />
+  </EntityType>
+  <Association Name="FK_T_Base_Address_ToTable">
+    <End Type="Model.T_Base_User" Role="T_Base_User" Multiplicity="0..1" />
+    <End Type="Model.T_Base_Address" Role="T_Base_Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Base_User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="T_Base_Address">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_Shop_Cart_ToTable_User">
+    <End Type="Model.T_Base_User" Role="T_Base_User" Multiplicity="0..1" />
+    <End Type="Model.T_Shop_Cart" Role="T_Shop_Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Base_User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="T_Shop_Cart">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_Shop_Cart_ToTable_Product">
+    <End Type="Model.T_Shop_Product" Role="T_Shop_Product" Multiplicity="0..1" />
+    <End Type="Model.T_Shop_Cart" Role="T_Shop_Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Shop_Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="T_Shop_Cart">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -126,13 +126,11 @@ D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\Microsoft.DiaSymReader.Native.x86
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\Microsoft.VisualBasic.Core.targets
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\Microsoft.Win32.Primitives.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.AppContext.dll
-D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.Collections.Immutable.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.Console.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.Diagnostics.Process.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.Diagnostics.StackTrace.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.IO.Compression.dll
-D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.IO.FileSystem.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.IO.Pipes.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.Reflection.Metadata.dll
@@ -206,4 +204,6 @@ D:\Code\Web\net\lab3\dotNetLab\Shop\obj\Debug\Shop.csproj.CoreCompileInputs.cach
 D:\Code\Web\net\lab3\dotNetLab\Shop\obj\Debug\Shop.csproj.CopyComplete
 D:\Code\Web\net\lab3\dotNetLab\Shop\obj\Debug\Shop.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\obj\Debug\Shop.pdb
+D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.Collections.Immutable.dll
+D:\Code\Web\net\lab3\dotNetLab\Shop\bin\roslyn\System.IO.FileSystem.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\obj\Debug\Shop.csprojAssemblyReference.cache

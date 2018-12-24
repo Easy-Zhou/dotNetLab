@@ -14,11 +14,23 @@ namespace Shop.Models
     
     public partial class T_Base_User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public T_Base_User()
+        {
+            this.T_Base_Address = new HashSet<T_Base_Address>();
+            this.T_Shop_Cart = new HashSet<T_Shop_Cart>();
+        }
+    
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public string Realname { get; set; }
         public string Email { get; set; }
         public Nullable<int> type { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<T_Base_Address> T_Base_Address { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<T_Shop_Cart> T_Shop_Cart { get; set; }
     }
 }

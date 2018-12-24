@@ -159,7 +159,6 @@
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\admin\Controllers\ProductController.cs" />
-    <Compile Include="Areas\admin\Controllers\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -181,7 +180,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelShop.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\T_Base_Address.cs">
+      <DependentUpon>ModelShop.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\T_Base_User.cs">
+      <DependentUpon>ModelShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_Shop_Cart.cs">
       <DependentUpon>ModelShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\T_Shop_Category.cs">
@@ -204,6 +209,10 @@
     <Content Include="Content\img\ipadpro.jpg" />
     <Content Include="Content\img\iphonexs.jpg" />
     <Content Include="Content\img\kuzi.jpg" />
+    <Content Include="Content\img\kuzi_1.jpg" />
+    <Content Include="Content\img\kuzi_2.jpg" />
+    <Content Include="Content\img\kuzi_3.jpg" />
+    <Content Include="Content\img\kuzi_4.jpg" />
     <Content Include="Content\img\shuma.jpg" />
     <Content Include="Content\img\xiezi.jpg" />
     <Content Include="Content\img\yifu.jpg" />
@@ -338,6 +347,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <EntityDeploy Include="Models\ModelShop.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -403,6 +413,7 @@
     <Content Include="Content\sb_template\vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Areas\admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\admin\Views\Category\Add.cshtml" />
+    <Content Include="Areas\admin\Views\Category\Update.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -421,7 +432,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layoutbackup.cshtml" />
@@ -441,7 +454,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Models\" />
     <Folder Include="Areas\admin\Views\Product\" />
-    <Folder Include="Areas\admin\Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -452,7 +464,9 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>

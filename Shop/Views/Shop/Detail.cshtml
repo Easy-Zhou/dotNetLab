@@ -3,14 +3,56 @@
     ViewBag.Title = "商品详情";
     Layout = "~/Views/Shared/_Layout.cshtml";
     Shop.Models.T_Shop_Product product = ViewBag.item;
+    Shop.Models.T_Base_User user = null;
+    if (Session["ticket"] != null)
+    {
+        user = (Shop.Models.T_Base_User)Session["ticket"];
+    }
 }
+@section css{
+    <style type="text/css">
+        span {
+            display: inline-block;
+            width: 32%;
+        }
 
+        #price {
+            color: firebrick;
+            font-size: 20px;
+        }
+    </style>
+}
 <div>
-    <img style="height:320px"  src="~/Content/img/@product.PicUrl" />
+    <img style="height:320px;margin-bottom:5px;" src="~/Content/img/@product.PicUrl" />
 </div>
 <div>
-    <p>@product.ProductName</p>
-    <p>@product.price</p>
+    <h4>@product.ProductName</h4>
+    <p id="price" style="margin:10px 0px 0px 0px;">￥ @product.price</p>
+    <br />
+    <p>
+        <span>销量:@product.SelledAmount</span>
+        <span>库存:@product.StockAmount</span>
+    </p>
+
+    <nav aria-label="...">
+        <ul class="pager" style="margin-top:0px;">
+            <li class="next"><a href="#" style="margin-right:5px;" onclick="addCart(@user.Id)">加入购物车</a></li>
+        </ul>
+    </nav>
+    <p>@user.Username</p>
+    <span>@user.Id</span>
+    <span>@user.Realname</span>
+    <span>@user.Password</span>
+    <span>@user.Email</span>
 </div>
+
+@section javascript{
+    <script>
+        function addCart(userId) {
+            alert(userId);
+        }
+    </script>
+
+}
 
 

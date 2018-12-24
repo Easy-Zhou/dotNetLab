@@ -8,7 +8,12 @@
         <EntityTypeShape EntityType="Model.T_Shop_Category" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.T_Shop_Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="Model.FK_T_Shop_Product_ToTable" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Model.T_Base_User" Width="1.5" PointX="6" PointY="1" />
+        <EntityTypeShape EntityType="Model.T_Base_User" Width="1.5" PointX="5.75" PointY="1.25" />
+        <EntityTypeShape EntityType="Model.T_Base_Address" Width="1.5" PointX="8" PointY="1.625" />
+        <EntityTypeShape EntityType="Model.T_Shop_Cart" Width="1.5" PointX="8" PointY="4.25" />
+        <AssociationConnector Association="Model.FK_T_Base_Address_ToTable" />
+        <AssociationConnector Association="Model.FK_T_Shop_Cart_ToTable_User" />
+        <AssociationConnector Association="Model.FK_T_Shop_Cart_ToTable_Product" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

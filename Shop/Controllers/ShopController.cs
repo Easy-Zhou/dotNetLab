@@ -35,5 +35,11 @@ namespace Shop.Controllers
             return View();
         }
 
+        public JsonResult Cart()
+        {
+
+            return null;
+        }
+
     }
 }

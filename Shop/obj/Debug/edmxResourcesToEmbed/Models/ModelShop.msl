@@ -35,5 +35,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="T_Base_Address">
+      <EntityTypeMapping TypeName="Model.T_Base_Address">
+        <MappingFragment StoreEntitySet="T_Base_Address">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Shop_Cart">
+      <EntityTypeMapping TypeName="Model.T_Shop_Cart">
+        <MappingFragment StoreEntitySet="T_Shop_Cart">
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

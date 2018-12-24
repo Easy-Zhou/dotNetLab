@@ -14,6 +14,12 @@ namespace Shop.Models
     
     public partial class T_Shop_Product
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public T_Shop_Product()
+        {
+            this.T_Shop_Cart = new HashSet<T_Shop_Cart>();
+        }
+    
         public int Id { get; set; }
         public string ProductName { get; set; }
         public string PicUrl { get; set; }
@@ -23,5 +29,7 @@ namespace Shop.Models
         public Nullable<int> CategoryId { get; set; }
     
         public virtual T_Shop_Category T_Shop_Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<T_Shop_Cart> T_Shop_Cart { get; set; }
     }
 }
