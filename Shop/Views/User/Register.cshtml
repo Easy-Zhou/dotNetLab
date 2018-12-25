@@ -6,62 +6,66 @@
 
 @section css{
     <style type="text/css">
-        div .form-group{
-            margin-bottom:10px;
+        div .form-group {
+            margin-bottom: 10px;
         }
+
         div .info {
             margin: 12px 0px 0px 0px;
             padding: 0px;
             height: 2em;
         }
-        div p{
-            line-height:2em;
+
+        .info p {
+            line-height: 2em;
         }
-    </style>    
+    </style>
 
 }
-<form action="/user/registersave" style="padding:20px">
+<div style="padding:20px">
     <div class="form-group">
         <label for="Username">User Name</label>
         <input type="text" class="form-control" id="Username" name="Username" placeholder="登录名" onblur="check_isexist()">
-        <div hidden id="username_info" class="info" role="alert" ></div>
+        <div hidden id="username_info" class="info alert" role="alert"></div>
     </div>
     <div class="form-group">
         <label for="Password">Password</label>
         <input type="password" class="form-control" id="Password" name="Password" placeholder="***">
-        <div hidden id="username_info" class="info" role="alert" ></div>
+        <div hidden id="username_info" class="info alert" role="alert"></div>
     </div>
     <div class="form-group">
         <label for="Realname">RealName</label>
         <input type="text" class="form-control" id="Realname" name="Realname" placeholder="姓名">
-        <div hidden id="username_info" class="info" role="alert" ></div>
+        <div hidden id="username_info" class="info alert" role="alert"></div>
     </div>
     <div class="form-group">
         <label for="Email">Email</label>
         <input type="text" class="form-control" id="Email" name="Email" placeholder="Email">
-        <div hidden id="username_info" class="info" role="alert" ></div>
+        <div hidden id="username_info" class="info alert" role="alert"></div>
     </div>
 
-    <button type="submit" class="btn btn-default" style="margin:0 auto">注册</button>
-</form>
-
-<div style="text-align:center">
+    <div style="text-align:center">
+        <button style="width:150px;" type="button" id="register-button" class="btn btn-primary" disabled="" onclick="registerSave()">注册</button>
+    </div>
+</div>
+<div style="text-align:center;">
     <a href="/user/login">登录</a>
 </div>
-
 @section javascript{
     <script>
         function check_isexist() {
             var username = $("#Username").val();
+            var button = $("#register-button");
             var info = $("#username_info");
             if (username == "") {
-                info.addClass("alert alert-danger");
+                info.removeClass("alert-success").addClass("alert-danger");
                 info.html("<p>用户名不能为空！</p>");
                 info.removeAttr("hidden");
+                button.attr("disabled", "");
             } else {
                 $.ajax({
                     url: "/user/CheckUsername",
-                    data: { Username: Username },
+                    data: { Username: username },
                     async: true,
                     type: "POST",
                     success: function (result) {
@@ -69,14 +73,38 @@
                             info.removeAttr("hidden");
                             info.removeClass("alert-danger").addClass("alert-success");
                             info.html("<p>用户名通过</p>");
+                            button.removeAttr("disabled");
                         }
                         else {
                             info.removeAttr("hidden");
+                            info.removeClass("alert-success").addClass("alert-danger");
                             info.html("<p>用户名已被暂用</p>");
+                            button.attr("disabled", "");
                         }
                     }
                 })
             }
         }
-    </script>    
+        function registerSave() {
+            var username = $("#Username").val();
+            var password = $("#Password").val();
+            var realname = $("#Realname").val();
+            var email = $("#Email").val();
+            $.ajax({
+                url: "/user/RegisterSave",
+                data: { Username: username, Password: password, Realname: realname, Email: email },
+                async: true,
+                type: "POST",
+                success: function (result) {
+                    if (result.code == 1) {
+                        alert("注册成功")
+                        window.location.href = "/user/login";
+                    }
+                    else {
+                        alert(result.message)
+                    }
+                }
+            })
+        }
+    </script>
 }

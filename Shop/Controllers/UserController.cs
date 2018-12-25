@@ -19,18 +19,25 @@ namespace Shop.Controllers
             return View();
         }
 
-        public ActionResult RegisterSave(string Username, string Password, string Realname, string Email)
+        public JsonResult RegisterSave(string Username, string Password, string Realname, string Email)
         {
             Shop.Models.ShopEntities db = new Models.ShopEntities();
-            Shop.Models.T_Base_User user = new Models.T_Base_User();
-            user.Username = Username;
-            user.Password = Password;
-            user.Realname = Realname;
-            user.Email = Email;
-            user.type = 0;
-            db.T_Base_User.Add(user);
-            db.SaveChanges();
-            return View();
+            if(db.T_Base_User.Where(m => m.Username == Username).ToList().Count > 0)
+            {
+                return Json(new { code = 0, message = "用户名已存在，注册失败" });
+            }
+            else
+            {
+                Shop.Models.T_Base_User user = new Models.T_Base_User();
+                user.Username = Username;
+                user.Password = Password;
+                user.Realname = Realname;
+                user.Email = Email;
+                user.type = 0;
+                db.T_Base_User.Add(user);
+                db.SaveChanges();
+                return Json(new { code = 1, message = "注册成功"});
+            }
         }
 
         //public ActionResult LoginCheck(String Username, String Password)
@@ -51,9 +58,8 @@ namespace Shop.Controllers
             Shop.Models.ShopEntities db = new Models.ShopEntities();
             if (db.T_Base_User.Where(m => m.Username == Username && m.Password == Password).ToList().Count > 0)
             {
-                Shop.Models.T_Base_User user = new Models.T_Base_User();
-                user.Username = Username;
-                user.Password = Password;
+
+                Shop.Models.T_Base_User user = db.T_Base_User.Single(m => m.Username == Username);
                 Session["ticket"] = user;
                 return Json(new { code = 1, message = "登录成功" });
             }
@@ -73,6 +79,16 @@ namespace Shop.Controllers
         {
             Session["ticket"] = null;
             return RedirectToAction("index", "shop");
+        }
+
+        public JsonResult CheckUsername(String Username)
+        {
+            Shop.Models.ShopEntities db = new Models.ShopEntities();
+            if (db.T_Base_User.Where(m => m.Username == Username).ToList().Count > 0)
+            {
+                return Json(new { code = 0, message = "用户名已存在" });
+            }
+            return Json(new { code = 1, message = "用户名可使用" });
         }
     }
 }
