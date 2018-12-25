@@ -36,20 +36,28 @@
 
     <nav aria-label="...">
         <ul class="pager" style="margin-top:0px;">
-            <li class="next"><a href="#" style="margin-right:5px;" onclick="addCart(@user.Id)">加入购物车</a></li>
+            <li class="next"><a href="#" style="margin-right:5px;" onclick="addCart()">加入购物车</a></li>
         </ul>
     </nav>
-    <p>@user.Username</p>
-    <span>@user.Id</span>
-    <span>@user.Realname</span>
-    <span>@user.Password</span>
-    <span>@user.Email</span>
 </div>
 
 @section javascript{
     <script>
-        function addCart(userId) {
-            alert(userId);
+        function addCart() {
+            $.ajax({
+                url: "/shop/AddCart",
+                data: { userId:@user.Id, productId:@product.Id},
+                async: true,
+                type: "POST",
+                success: function (result) {
+                    if (result.code == 1) {
+                        alert("添加成功！")
+                    }
+                    else {
+                        alert(result.message)
+                    }
+                }
+            })
         }
     </script>
 

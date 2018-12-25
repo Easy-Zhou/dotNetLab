@@ -35,10 +35,28 @@ namespace Shop.Controllers
             return View();
         }
 
-        public JsonResult Cart()
+        public JsonResult AddCart(int userId,int productId)
         {
-
-            return null;
+            Shop.Models.ShopEntities db = new Models.ShopEntities();
+            Shop.Models.T_Shop_Cart cart = null;
+            cart = db.T_Shop_Cart.SingleOrDefault(m => m.UserId == userId && m.ProductId == productId);
+            if (cart != null)
+            {
+                cart.Count += 1;
+            }
+            else
+            {
+                cart = new Models.T_Shop_Cart();
+                cart.ProductId = productId;
+                cart.UserId = userId;
+                cart.Count = 1;
+                db.T_Shop_Cart.Add(cart);
+            }
+            if (db.SaveChanges() > 0)
+            {
+                return Json(new { code = 1, message = "添加成功" });
+            }
+            return Json(new { code = 0, message = "添加失败" }); ;
         }
 
     }
