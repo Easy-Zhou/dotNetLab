@@ -48,7 +48,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
           <Property Name="PicUrl" Type="nvarchar" MaxLength="50" />
-          <Property Name="price" Type="nchar" MaxLength="10" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" />
           <Property Name="StockAmount" Type="int" />
           <Property Name="SelledAmount" Type="int" />
           <Property Name="CategoryId" Type="int" />
@@ -144,7 +144,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PicUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="price" Type="Decimal" />
           <Property Name="StockAmount" Type="Int32" />
           <Property Name="SelledAmount" Type="Int32" />
           <Property Name="CategoryId" Type="Int32" />
@@ -259,64 +259,63 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ShopEntities">
-          <EntitySetMapping Name="T_Shop_Category">
-            <EntityTypeMapping TypeName="Model.T_Shop_Category">
-              <MappingFragment StoreEntitySet="T_Shop_Category">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-                <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="T_Shop_Product">
-            <EntityTypeMapping TypeName="Model.T_Shop_Product">
-              <MappingFragment StoreEntitySet="T_Shop_Product">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="StockAmount" ColumnName="StockAmount" />
-                <ScalarProperty Name="SelledAmount" ColumnName="SelledAmount" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="T_Base_User">
-            <EntityTypeMapping TypeName="Model.T_Base_User">
-              <MappingFragment StoreEntitySet="T_Base_User">
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Realname" ColumnName="Realname" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="T_Base_Address">
-            <EntityTypeMapping TypeName="Model.T_Base_Address">
-              <MappingFragment StoreEntitySet="T_Base_Address">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="T_Shop_Cart">
-            <EntityTypeMapping TypeName="Model.T_Shop_Cart">
-              <MappingFragment StoreEntitySet="T_Shop_Cart">
-                <ScalarProperty Name="Count" ColumnName="Count" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ShopEntities">
+    <EntitySetMapping Name="T_Shop_Category">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.T_Shop_Category)">
+        <MappingFragment StoreEntitySet="T_Shop_Category">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Shop_Product">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.T_Shop_Product)">
+        <MappingFragment StoreEntitySet="T_Shop_Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="StockAmount" ColumnName="StockAmount" />
+          <ScalarProperty Name="SelledAmount" ColumnName="SelledAmount" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Base_User">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.T_Base_User)">
+        <MappingFragment StoreEntitySet="T_Base_User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Realname" ColumnName="Realname" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Base_Address">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.T_Base_Address)">
+        <MappingFragment StoreEntitySet="T_Base_Address">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Shop_Cart">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.T_Shop_Cart)">
+        <MappingFragment StoreEntitySet="T_Shop_Cart">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -330,7 +329,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
       </DesignerInfoPropertySet>
     </Options>

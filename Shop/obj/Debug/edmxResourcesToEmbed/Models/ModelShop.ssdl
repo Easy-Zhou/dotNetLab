@@ -43,7 +43,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
     <Property Name="PicUrl" Type="nvarchar" MaxLength="50" />
-    <Property Name="price" Type="nchar" MaxLength="10" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="0" />
     <Property Name="StockAmount" Type="int" />
     <Property Name="SelledAmount" Type="int" />
     <Property Name="CategoryId" Type="int" />

@@ -23,7 +23,7 @@ namespace Shop.Models
         public int Id { get; set; }
         public string ProductName { get; set; }
         public string PicUrl { get; set; }
-        public string price { get; set; }
+        public Nullable<decimal> price { get; set; }
         public Nullable<int> StockAmount { get; set; }
         public Nullable<int> SelledAmount { get; set; }
         public Nullable<int> CategoryId { get; set; }

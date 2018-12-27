@@ -3,8 +3,8 @@
     ViewBag.Title = "商品列表";
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<Shop.Models.T_Shop_Product> tmp = ViewBag.lst;
-    if (Session["ticket"] == null){ViewBag.login = 1;}
-    else{ViewBag.login = 0;}
+    //if (Session["ticket"] == null){ViewBag.login = 1;}
+    //else{ViewBag.login = 0;}
 }
 
 <div style="padding:5px">
@@ -12,7 +12,7 @@
         foreach(Shop.Models.T_Shop_Product item in tmp)
         {
     <div class="media">
-        <a  onclick="checkIsLoging(@item.Id)" style="text-decoration:none;color:black">
+        <a  @*onclick="checkIsLoging(@item.Id)"*@ href="/shop/detail?Id=@item.Id" style="text-decoration:none;color:black">
             <div class="media-left">
                 <img class="media-object" style="width:64px;height:80px" src="~/Content/img/@item.PicUrl" alt="...">
             </div>
@@ -28,7 +28,7 @@
 </div>
 
 @section javascript{
-    <script>
+    @*<script>
         function checkIsLoging(Id) {
             if (@ViewBag.login == 1) {
                 alert("请先登录")
@@ -38,5 +38,5 @@
                 window.location.href = "/shop/detail?Id=" + Id;
             }
         }
-    </script>    
+    </script>*@    
 }

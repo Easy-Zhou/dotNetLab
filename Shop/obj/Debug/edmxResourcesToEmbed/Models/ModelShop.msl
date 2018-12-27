@@ -2,7 +2,7 @@
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ShopEntities">
     <EntitySetMapping Name="T_Shop_Category">
-      <EntityTypeMapping TypeName="Model.T_Shop_Category">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.T_Shop_Category)">
         <MappingFragment StoreEntitySet="T_Shop_Category">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
@@ -11,7 +11,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="T_Shop_Product">
-      <EntityTypeMapping TypeName="Model.T_Shop_Product">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.T_Shop_Product)">
         <MappingFragment StoreEntitySet="T_Shop_Product">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
@@ -24,33 +24,33 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="T_Base_User">
-      <EntityTypeMapping TypeName="Model.T_Base_User">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.T_Base_User)">
         <MappingFragment StoreEntitySet="T_Base_User">
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Realname" ColumnName="Realname" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Realname" ColumnName="Realname" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="type" ColumnName="type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="T_Base_Address">
-      <EntityTypeMapping TypeName="Model.T_Base_Address">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.T_Base_Address)">
         <MappingFragment StoreEntitySet="T_Base_Address">
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="T_Shop_Cart">
-      <EntityTypeMapping TypeName="Model.T_Shop_Cart">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.T_Shop_Cart)">
         <MappingFragment StoreEntitySet="T_Shop_Cart">
-          <ScalarProperty Name="Count" ColumnName="Count" />
-          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

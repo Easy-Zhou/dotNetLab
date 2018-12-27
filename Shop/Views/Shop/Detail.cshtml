@@ -3,11 +3,11 @@
     ViewBag.Title = "商品详情";
     Layout = "~/Views/Shared/_Layout.cshtml";
     Shop.Models.T_Shop_Product product = ViewBag.item;
-    Shop.Models.T_Base_User user = null;
-    if (Session["ticket"] != null)
-    {
-        user = (Shop.Models.T_Base_User)Session["ticket"];
-    }
+    //Shop.Models.T_Base_User user = null;
+    //if (Session["ticket"] != null)
+    //{
+    //    user = (Shop.Models.T_Base_User)Session["ticket"];
+    //}
 }
 @section css{
     <style type="text/css">
@@ -46,12 +46,16 @@
         function addCart() {
             $.ajax({
                 url: "/shop/AddCart",
-                data: { userId:@user.Id, productId:@product.Id},
+                data: {productId:@product.Id},
                 async: true,
                 type: "POST",
                 success: function (result) {
                     if (result.code == 1) {
                         alert("添加成功！")
+                    }
+                    else if (result.code == 2) {
+                        alert(result.message)
+                        window.location.href = "/user/login";
                     }
                     else {
                         alert(result.message)

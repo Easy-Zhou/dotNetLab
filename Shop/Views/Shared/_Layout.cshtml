@@ -40,6 +40,21 @@
             width: 100%;
         }
 
+        #footer_menu {
+            list-style: none;
+        }
+
+            #footer_menu li {
+                float: left;
+                width: 33.3%;
+                height: 40px;
+                box-sizing: border-box;
+            }
+
+                #footer_menu li p {
+                    height: 100%;
+                }
+
         img {
             width: 100%;
         }
@@ -54,6 +69,14 @@
             border: none;
             color: cornsilk;
             font-family: NSimSun;
+        }
+        .foot{
+            
+            color: black;
+            display: flex;
+            display: block;
+            justify-content: center;
+            align-items: center;
         }
     </style>
     @RenderSection("css", false)
@@ -91,7 +114,13 @@
         <div class="container" style="padding:0px;margin:0px">
             @RenderBody()
         </div>
-        <footer>版本所有</footer>
+        <footer>
+            <ul id="footer_menu">
+                <li class="add_boder"><a href="/shop/index" class="foot" style="text-decoration: none;">商城首页</a></li>
+                <li class="add_boder"><a href="/shop/cart" class="foot" style="text-decoration: none;">购物车</a></li>
+                <li class="add_boder"><a href="/user/index" class="foot" style="text-decoration: none;">个人中心</a></li>
+            </ul>
+        </footer>
     </div>
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>

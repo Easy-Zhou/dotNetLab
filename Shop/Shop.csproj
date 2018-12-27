@@ -338,6 +338,7 @@
       <LastGenOutput>ModelShop.Context.cs</LastGenOutput>
       <DependentUpon>ModelShop.edmx</DependentUpon>
     </Content>
+    <Content Include="Models\ModelShop.edmx.sql" />
     <Content Include="Models\ModelShop.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelShop.edmx</DependentUpon>
@@ -449,6 +450,9 @@
     <Content Include="Views\User\RegisterSave.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shop\Detail.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Shop\Cart.cshtml" />
+    <Content Include="Views\Shop\Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
