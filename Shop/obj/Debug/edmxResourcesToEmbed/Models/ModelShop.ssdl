@@ -7,6 +7,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Address" Type="nvarchar(max)" />
     <Property Name="UserId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="11" />
   </EntityType>
   <EntityType Name="T_Base_User">
     <Key>
@@ -36,6 +38,17 @@
     <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
     <Property Name="PicUrl" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="T_Shop_Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="AddressId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
   <EntityType Name="T_Shop_Product">
     <Key>
       <PropertyRef Name="Id" />
@@ -43,7 +56,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
     <Property Name="PicUrl" Type="nvarchar" MaxLength="50" />
-    <Property Name="price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="2" />
     <Property Name="StockAmount" Type="int" />
     <Property Name="SelledAmount" Type="int" />
     <Property Name="CategoryId" Type="int" />
@@ -84,6 +97,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_T_Shop_Order_ToAddress">
+    <End Role="T_Base_Address" Type="Self.T_Base_Address" Multiplicity="1" />
+    <End Role="T_Shop_Order" Type="Self.T_Shop_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Base_Address">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="T_Shop_Order">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_Shop_Order_ToProduct">
+    <End Role="T_Shop_Product" Type="Self.T_Shop_Product" Multiplicity="1" />
+    <End Role="T_Shop_Order" Type="Self.T_Shop_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Shop_Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="T_Shop_Order">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_Shop_Order_ToUser">
+    <End Role="T_Base_User" Type="Self.T_Base_User" Multiplicity="1" />
+    <End Role="T_Shop_Order" Type="Self.T_Shop_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Base_User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="T_Shop_Order">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_T_Shop_Product_ToTable">
     <End Role="T_Shop_Category" Type="Self.T_Shop_Category" Multiplicity="0..1" />
     <End Role="T_Shop_Product" Type="Self.T_Shop_Product" Multiplicity="*" />
@@ -101,6 +150,7 @@
     <EntitySet Name="T_Base_User" EntityType="Self.T_Base_User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_Shop_Cart" EntityType="Self.T_Shop_Cart" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_Shop_Category" EntityType="Self.T_Shop_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Shop_Order" EntityType="Self.T_Shop_Order" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_Shop_Product" EntityType="Self.T_Shop_Product" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_T_Base_Address_ToTable" Association="Self.FK_T_Base_Address_ToTable">
       <End Role="T_Base_User" EntitySet="T_Base_User" />
@@ -113,6 +163,18 @@
     <AssociationSet Name="FK_T_Shop_Cart_ToTable_User" Association="Self.FK_T_Shop_Cart_ToTable_User">
       <End Role="T_Base_User" EntitySet="T_Base_User" />
       <End Role="T_Shop_Cart" EntitySet="T_Shop_Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_Shop_Order_ToAddress" Association="Self.FK_T_Shop_Order_ToAddress">
+      <End Role="T_Base_Address" EntitySet="T_Base_Address" />
+      <End Role="T_Shop_Order" EntitySet="T_Shop_Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_Shop_Order_ToProduct" Association="Self.FK_T_Shop_Order_ToProduct">
+      <End Role="T_Shop_Product" EntitySet="T_Shop_Product" />
+      <End Role="T_Shop_Order" EntitySet="T_Shop_Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_Shop_Order_ToUser" Association="Self.FK_T_Shop_Order_ToUser">
+      <End Role="T_Base_User" EntitySet="T_Base_User" />
+      <End Role="T_Shop_Order" EntitySet="T_Shop_Order" />
     </AssociationSet>
     <AssociationSet Name="FK_T_Shop_Product_ToTable" Association="Self.FK_T_Shop_Product_ToTable">
       <End Role="T_Shop_Category" EntitySet="T_Shop_Category" />

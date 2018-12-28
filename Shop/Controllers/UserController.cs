@@ -90,5 +90,47 @@ namespace Shop.Controllers
             }
             return Json(new { code = 1, message = "用户名可使用" });
         }
+
+        public ActionResult Order()
+        {
+            Shop.Models.T_Base_User user = null;
+            if(Session["ticket"]==null)
+            {
+                return Redirect("/user/login");
+            }
+            else
+            {
+                user = (Shop.Models.T_Base_User)Session["ticket"];
+            }
+            Shop.Models.ShopEntities db = new Models.ShopEntities();
+            List<Shop.Models.T_Shop_Order> order = user.T_Shop_Order.ToList();
+            ViewBag.lst = order;
+            return View();
+        }
+
+        public ActionResult OrderDetail(int Id)
+        {
+            Shop.Models.ShopEntities db = new Models.ShopEntities();
+            Shop.Models.T_Shop_Order order = db.T_Shop_Order.Single(m => m.Id == Id);
+            ViewBag.order = order;
+            return View();
+        }
+
+        public ActionResult Address(int OrderId)
+        {
+            Shop.Models.T_Base_User user = null;
+            if (Session["ticket"] == null)
+            {
+                return Redirect("/user/login");
+            }
+            else
+            {
+                user = (Shop.Models.T_Base_User)Session["ticket"];
+            }
+            Shop.Models.ShopEntities db = new Models.ShopEntities();
+            List<Shop.Models.T_Base_Address> ads = user.T_Base_Address.ToList();
+            ViewBag.lst = ads;
+            return View();
+        }
     }
 }

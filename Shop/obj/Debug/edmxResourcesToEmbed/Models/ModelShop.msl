@@ -38,6 +38,8 @@
     <EntitySetMapping Name="T_Base_Address">
       <EntityTypeMapping TypeName="IsTypeOf(Model.T_Base_Address)">
         <MappingFragment StoreEntitySet="T_Base_Address">
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -51,6 +53,18 @@
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="Count" ColumnName="Count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Shop_Order">
+      <EntityTypeMapping TypeName="Model.T_Shop_Order">
+        <MappingFragment StoreEntitySet="T_Shop_Order">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

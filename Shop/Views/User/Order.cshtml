@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "我的订单";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Shop.Models.T_Shop_Order> orders = ViewBag.lst;
+}
+
+<div style="padding:5px">
+    @{
+        foreach (Shop.Models.T_Shop_Order item in orders)
+        {
+            <div class="media">
+                <a @*onclick="checkIsLoging(@item.Id)"*@ href="/user/OrderDetail?Id=@item.Id" style="text-decoration:none;color:black">
+                    <div class="media-left">
+                        <img class="media-object" style="width:64px;height:80px" src="~/Content/img/@item.T_Shop_Product.PicUrl" alt="...">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">@item.T_Shop_Product.ProductName</h4>
+
+                        <p style="margin:15px 0px 0px 0px;"><span>单价：￥@item.T_Shop_Product.price</span> &nbsp;&nbsp;<span> x @item.Count</span><span style="float:right;">合计：<span style="color:red;font-size:20px;">￥：@item.Price</span></span></p>
+                    </div>
+                </a>
+            </div>
+        }
+    }
+</div>
+

@@ -18,6 +18,7 @@ namespace Shop.Models
         public T_Shop_Product()
         {
             this.T_Shop_Cart = new HashSet<T_Shop_Cart>();
+            this.T_Shop_Order = new HashSet<T_Shop_Order>();
         }
     
         public int Id { get; set; }
@@ -31,5 +32,7 @@ namespace Shop.Models
         public virtual T_Shop_Category T_Shop_Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<T_Shop_Cart> T_Shop_Cart { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<T_Shop_Order> T_Shop_Order { get; set; }
     }
 }

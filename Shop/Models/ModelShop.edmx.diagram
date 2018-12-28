@@ -5,15 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="24b86af9a5914e44a217c80b7062bb79" Name="Diagram1" ZoomLevel="130">
-        <EntityTypeShape EntityType="Model.T_Shop_Category" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.T_Shop_Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_Shop_Category" Width="1.5" PointX="1.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_Shop_Product" Width="1.5" PointX="4" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="Model.FK_T_Shop_Product_ToTable" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Model.T_Base_User" Width="1.5" PointX="5.75" PointY="1.25" />
-        <EntityTypeShape EntityType="Model.T_Base_Address" Width="1.5" PointX="8" PointY="1.625" />
-        <EntityTypeShape EntityType="Model.T_Shop_Cart" Width="1.5" PointX="4.875" PointY="4.375" />
+        <EntityTypeShape EntityType="Model.T_Base_User" Width="1.5" PointX="6.375" PointY="4.125" />
+        <EntityTypeShape EntityType="Model.T_Base_Address" Width="1.5" PointX="9.25" PointY="4.25" />
+        <EntityTypeShape EntityType="Model.T_Shop_Cart" Width="1.5" PointX="3.875" PointY="4.375" />
         <AssociationConnector Association="Model.FK_T_Base_Address_ToTable" />
         <AssociationConnector Association="Model.FK_T_Shop_Cart_ToTable_User" />
         <AssociationConnector Association="Model.FK_T_Shop_Cart_ToTable_Product" />
+        <EntityTypeShape EntityType="Model.T_Shop_Order" Width="1.5" PointX="6.625" PointY="0.5" />
+        <AssociationConnector Association="Model.FK_T_Shop_Order_ToAddress" />
+        <AssociationConnector Association="Model.FK_T_Shop_Order_ToUser" />
+        <AssociationConnector Association="Model.FK_T_Shop_Order_ToProduct" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

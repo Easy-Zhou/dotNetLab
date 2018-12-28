@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "订单详情";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Shop.Models.T_Shop_Order order = ViewBag.order;
+}
+
+
+<div style="padding:5px">
+    <div class="media">
+        <a @*onclick="checkIsLoging(@item.Id)"*@ href="/user/address?Id=@order.Id" style="text-decoration:none;color:black">
+            <div class="media-left">
+                <h4>@order.T_Base_Address.Name</h4>
+            </div>
+            <div class="media-body">
+                <p style="font-size:14px;">@order.T_Base_Address.PhoneNumber</p>
+                <p style="margin:15px 0px 0px 0px;">@order.T_Base_Address.Address</p>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+<div style="padding:5px">
+    <div class="media">
+        <a @*onclick="checkIsLoging(@item.Id)"*@ href="/shop/detail?Id=@order.ProductId" style="text-decoration:none;color:black">
+            <div class="media-left">
+                <img class="media-object" style="width:64px;height:80px" src="~/Content/img/@order.T_Shop_Product.PicUrl" alt="...">
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">@order.T_Shop_Product.ProductName</h4>
+
+                <p style="margin:15px 0px 0px 0px;"><span>单价：￥@order.T_Shop_Product.price</span> &nbsp;&nbsp;<span> x @order.Count</span><span style="float:right;">合计：<span style="color:red;font-size:20px;">￥：@order.Price</span></span></p>
+            </div>
+        </a>
+    </div>
+</div>

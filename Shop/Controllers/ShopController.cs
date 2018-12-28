@@ -82,20 +82,28 @@ namespace Shop.Controllers
 
         public JsonResult Settle_accounts(List<int> signArray)
         {
-            List<Shop.Models.T_Shop_Cart> carts = null;
             Shop.Models.ShopEntities db = new Models.ShopEntities();
+            
             if (signArray.Count > 0)
             {
                 for (int i = 0; i < signArray.Count; i++)
                 {
                     if(signArray[i] > 0) {
-                        Shop.Models.T_Shop_Cart cart =  db.T_Shop_Cart.Single(m => m.Id == signArray[i]);
-                        carts.Add(cart);
-                        
+                        Shop.Models.T_Shop_Order order = new Models.T_Shop_Order();
+                        int tempId = (int)signArray[i];
+                        Shop.Models.T_Shop_Cart cart =  db.T_Shop_Cart.Single(m => m.Id == tempId);
+                        order.ProductId = (int)cart.ProductId;
+                        order.UserId = (int)cart.UserId;
+                        order.AddressId = cart.T_Base_User.T_Base_Address.ToList()[0].Id;
+                        order.Price = (Decimal)(cart.Count * cart.T_Shop_Product.price);
+                        order.Count = (int)cart.Count;
+                        db.T_Shop_Order.Add(order);
+                        db.T_Shop_Cart.Remove(cart);
+                        db.SaveChanges();
                     }
                 }
 
-                return Json(new { code = 1, message = signArray[2] });
+                return Json(new { code = 1, message =  "成功" });
             }
             return Json(new { code = 0, message = "失败" });
         }
@@ -109,11 +117,6 @@ namespace Shop.Controllers
             if (result > 0)
                 return Json(new { code = 1, message = "success" });
             return Json(new { code = 0, message = "failed" });
-        }
-
-        public ActionResult Order()
-        {
-            return View();
         }
     }
 }

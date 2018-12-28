@@ -160,6 +160,8 @@
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\AdminUserController.cs" />
     <Compile Include="Areas\admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\admin\Controllers\ManagerOrderController.cs" />
+    <Compile Include="Areas\admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\admin\Controllers\ProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
@@ -192,6 +194,9 @@
       <DependentUpon>ModelShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\T_Shop_Category.cs">
+      <DependentUpon>ModelShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_Shop_Order.cs">
       <DependentUpon>ModelShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\T_Shop_Product.cs">
@@ -424,6 +429,8 @@
     <Content Include="Areas\admin\Views\AdminUser\Add.cshtml" />
     <Content Include="Areas\admin\Views\AdminUser\Update.cshtml" />
     <Content Include="Areas\admin\Views\AdminUser\Login.cshtml" />
+    <Content Include="Areas\admin\Views\ManagerOrder\Index.cshtml" />
+    <Content Include="Areas\admin\Views\ManagerOrder\Update.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -461,11 +468,13 @@
     <Content Include="Views\Shop\Detail.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shop\Cart.cshtml" />
-    <Content Include="Views\Shop\Order.cshtml" />
+    <Content Include="Views\User\Order.cshtml" />
+    <Content Include="Views\User\OrderDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Models\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

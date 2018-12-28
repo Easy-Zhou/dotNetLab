@@ -14,10 +14,20 @@ namespace Shop.Models
     
     public partial class T_Base_Address
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public T_Base_Address()
+        {
+            this.T_Shop_Order = new HashSet<T_Shop_Order>();
+        }
+    
         public int Id { get; set; }
         public string Address { get; set; }
         public Nullable<int> UserId { get; set; }
+        public string Name { get; set; }
+        public string PhoneNumber { get; set; }
     
         public virtual T_Base_User T_Base_User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<T_Shop_Order> T_Shop_Order { get; set; }
     }
 }
