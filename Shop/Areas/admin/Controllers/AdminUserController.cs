@@ -93,7 +93,7 @@ namespace Shop.Areas.admin.Controllers
             {
 
                 Shop.Models.T_Base_User user = db.T_Base_User.Single(m => m.Username == Username);
-                Session["ticket"] = user;
+                Session["adminticket"] = user;
                 return Json(new { code = 1, message = "登录成功" });
             }
             else
@@ -111,7 +111,7 @@ namespace Shop.Areas.admin.Controllers
         public ActionResult Logout()
         {
             Shop.App_Start.ManageUser.IsLogin();
-            Session["ticket"] = null;
+            Session["adminticket"] = null;
             return Redirect("/admin/AdminUser/Login");
         }
 

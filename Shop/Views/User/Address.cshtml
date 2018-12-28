@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "选择地址";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Shop.Models.T_Base_Address> ads = ViewBag.lst;
+}
+
+<div style="padding:5px">
+    @{
+        foreach (var temp in ads)
+        {
+            <div class="media">
+                <a @*onclick="checkIsLoging(@item.Id)"*@ href="" style="text-decoration:none;color:black">
+                    <div class="media-left">
+                        <h4>@temp.Name</h4>
+                    </div>
+                    <div class="media-body">
+                        <p style="font-size:14px;">@temp.PhoneNumber</p>
+                        <p style="margin:15px 0px 0px 0px;">@temp.Address</p>
+                    </div>
+                </a>
+            </div>
+        }
+    }
+</div>
+
+
+<div style="position:fixed;bottom:40px;height:40px;background-color:antiquewhite;width:100%;">
+    <button class="btn btn-default" style="height:35px;float:right;margin-top:2.5px;" onclick="addAddress()">添加地址</button>
+</div>

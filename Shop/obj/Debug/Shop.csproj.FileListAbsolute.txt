@@ -202,7 +202,6 @@ D:\Code\Web\net\lab3\dotNetLab\Shop\bin\zh-Hans\System.Web.Razor.resources.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\zh-Hans\System.Web.WebPages.resources.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 D:\Code\Web\net\lab3\dotNetLab\Shop\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
-D:\Code\Web\net\lab3\dotNetLab\Shop\obj\Debug\Shop.csprojAssemblyReference.cache
 D:\Code\Web\net\lab3\dotNetLab\Shop\obj\Debug\Shop.csproj.CoreCompileInputs.cache
 D:\Code\Web\net\lab3\dotNetLab\Shop\obj\Debug\Shop.csproj.CopyComplete
 D:\Code\Web\net\lab3\dotNetLab\Shop\obj\Debug\Shop.dll

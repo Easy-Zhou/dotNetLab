@@ -9,7 +9,7 @@ namespace Shop.App_Start
     {
         public static void IsLogin()
         {
-            if(HttpContext.Current.Session["ticket"] == null)
+            if(HttpContext.Current.Session["adminticket"] == null)
             {
                 HttpContext.Current.Response.Redirect("/admin/AdminUser/Login");
             }

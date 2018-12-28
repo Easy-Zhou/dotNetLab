@@ -116,7 +116,7 @@ namespace Shop.Controllers
             return View();
         }
 
-        public ActionResult Address(int OrderId)
+        public ActionResult Address(int Id)
         {
             Shop.Models.T_Base_User user = null;
             if (Session["ticket"] == null)
@@ -127,6 +127,7 @@ namespace Shop.Controllers
             {
                 user = (Shop.Models.T_Base_User)Session["ticket"];
             }
+
             Shop.Models.ShopEntities db = new Models.ShopEntities();
             List<Shop.Models.T_Base_Address> ads = user.T_Base_Address.ToList();
             ViewBag.lst = ads;

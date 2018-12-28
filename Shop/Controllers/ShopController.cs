@@ -70,12 +70,18 @@ namespace Shop.Controllers
         public ActionResult Cart()
         {
             Shop.Models.T_Base_User user = null;
+            int Userid = 0;
             if (Session["ticket"] == null)
             {
                 return Redirect("/user/login");
             }
-            else { user = (Shop.Models.T_Base_User)Session["ticket"]; }
+            else { user = (Shop.Models.T_Base_User)Session["ticket"];
+                Userid = user.Id;
+            }
+            
             Shop.Models.ShopEntities db = new Models.ShopEntities();
+            user = db.T_Base_User.Single(m => m.Id == Userid);
+            Session["ticket"] = user;
             ViewBag.lst = user.T_Shop_Cart.ToList();
             return View();
         }
