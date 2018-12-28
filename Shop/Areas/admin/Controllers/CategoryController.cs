@@ -12,6 +12,7 @@ namespace Shop.Areas.admin.Controllers
         // GET: admin/Category
         public ActionResult Index()
         {
+            Shop.App_Start.ManageUser.IsLogin();
             Shop.Models.ShopEntities db = new Models.ShopEntities();
             List<Shop.Models.T_Shop_Category> cates = db.T_Shop_Category.ToList();
             ViewBag.lst = cates;
@@ -20,12 +21,14 @@ namespace Shop.Areas.admin.Controllers
 
         public ActionResult Add()
         {
+            Shop.App_Start.ManageUser.IsLogin();
             return View();
         }
 
         [HttpPost]
         public ActionResult Add(HttpPostedFileBase file,String categoryName)
         {
+
             String fileName = "";
             if (file == null || String.IsNullOrEmpty(file.FileName) || file.ContentLength == 0)
             {
@@ -72,6 +75,7 @@ namespace Shop.Areas.admin.Controllers
 
         public ActionResult Update(int Id)
         {
+            Shop.App_Start.ManageUser.IsLogin();
             Shop.Models.ShopEntities db = new Models.ShopEntities();
             Shop.Models.T_Shop_Category cate = db.T_Shop_Category.Single(m => m.Id == Id);
             ViewBag.category = cate;
@@ -80,6 +84,7 @@ namespace Shop.Areas.admin.Controllers
 
         public ActionResult UpdateSave(String categoryName, HttpPostedFileBase file,int id)
         {
+            Shop.App_Start.ManageUser.IsLogin();
             Shop.Models.ShopEntities db = new Models.ShopEntities();
             Shop.Models.T_Shop_Category cates = db.T_Shop_Category.Single(m => m.Id == id);
             cates.CategoryName = categoryName;

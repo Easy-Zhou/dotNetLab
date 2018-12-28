@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "添加产品";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+    List<Shop.Models.T_Shop_Category> cates = ViewBag.category;
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form role="form" action="/admin/Product/Add" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label>产品名称</label>
+                                <input class="form-control" placeholder="Enter category name" id="productName" name="productName" value="">
+                            </div>
+                            <div class="form-group">
+                                <label>产品类别</label>
+                                <select class="form-control" id="categoryId" name="categoryId" style="width:80px;height:25px;padding:0px 12px;display:inline-block;">
+                                    @foreach (var temp in cates)
+                                    {
+                                        <option value="@temp.Id">@temp.CategoryName</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>产品价格</label>
+                                <input class="form-control" placeholder="Enter Product Price" id="productPrice" name="productPrice" value="">
+                            </div>
+                            <div class="form-group">
+                                <label>产品库存</label>
+                                <input class="form-control" placeholder="Enter Product Stock" id="productStock" name="productStock" value="">
+                            </div>
+                            <div class="form-group">
+                                <label>上传图片</label>
+                                <input type="file" name="file">
+                            </div>
+                            <button type="submit" class="btn btn-default">提交</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

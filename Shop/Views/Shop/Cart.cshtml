@@ -12,7 +12,7 @@
             <div class="media">
                 <div class="media-left">
                     <div class="media-left">
-                        <input type="checkbox" class="checkbox" id="check_@temp.Id" onclick="updatePrice(@temp.Id,@temp.T_Shop_Product.price)" />
+                        <input type="checkbox" class="checkbox" id="check_@temp.Id" onclick="clickBox()" />
                         <input type="hidden" class="cartId" value="@temp.Id" />
                     </div>
                     <div class="media-body">
@@ -26,7 +26,7 @@
                         <h4 class="media-heading">@temp.T_Shop_Product.ProductName</h4>
                     </a>
                     <p style="margin:15px 0px 0px 0px;">
-                        <span style="color:red;font-size:20px;">￥<span id="price_@temp.Id" class="item_price">0<input type="hidden" class="item_prict_value" value="@temp.T_Shop_Product.price" /></span></span> &nbsp;&nbsp;&nbsp;
+                        <span style="color:red;font-size:20px;">￥<span id="price_@temp.Id" class="item_price">@temp.T_Shop_Product.price</span><input type="hidden" class="item_price_value" id="item_price_@temp.Id" value="@temp.T_Shop_Product.price" /></span> &nbsp;&nbsp;&nbsp;
                         <span style="float:right">数量：<button class="" onclick="minus(@temp.Id)" style="height:25px;width:20px;text-align:center" type="button">-</button><input onblur="updateCount(@temp.Id)" type="text" id="count_@temp.Id" style="width:40px;height:25px;text-align:center" class="item_count" value="@temp.Count"><button onclick="add(@temp.Id)" class="" style="height:25px;width:20px;text-align:center" type="button">+</button> 件</span>
                     </p>
                 </div>
@@ -37,34 +37,43 @@
     }
 </div>
 
-<div style="position:fixed;bottom:40px;height:40px;background:grey;width:100%;">
+<div style="position:fixed;bottom:40px;height:40px;background-color:antiquewhite;width:100%;">
 
     <button class="btn btn-default" style="height:35px;float:right;margin-top:2.5px;" onclick="settle_accounts()">结算</button>
-    <p style="float:right;line-height:40px;padding-right:8px;">合计：<span style="color:red">￥</span><span style="color:red" id="total_price">0</span></p>
+    <p style="float:right;line-height:40px;padding-right:8px;font-size:18px;">合计：<span style="color:red;">￥</span><span style="color:red" id="total_price">0</span></p>
 </div>
 
 @section javascript{
     <script>
-        function updatePrice(Id, price, status) {
-            var total_price = $("total_price");
-            var count = Number($("#count_" + Id).val());
-            if ($("#check_" + Id).is(':checked')) {
-                total_price = 2;
+        function updatePrice() {
+            total_price = 0;
+            var lstGetId = document.getElementsByClassName("cartId");
+            for (i = 0; i < lstGetId.length; i++) {
+                var tempId = lstGetId[i].value;
+                var price = Number($("#item_price_" + tempId).val());
+                var count = Number($("#count_" + tempId).val());
+                if ($("#check_" + tempId).is(':checked')) {
+                    total_price += count * price;
+                }
             }
+            $("#total_price").html(total_price);
         }
-        $(window).load(function () {
-            alert("hhh")
-            var lstGetPrice = document.getElementsByClassName("item_prict_value");
-            var lstSetPrice = document.getElementsByClassName("item_price");
-            var lstGetCount = document.getElementsByClassName("item_count");
+
+        function clickBox() {
+            updatePrice();
+        }
+
+        //$(window).load(function () {
+        //    alert("hhh")
+        //    var lstSetPrice = document.getElementsByClassName("item_price_value");
+        //    var lstGetPrice = document.getElementsByClassName("item_price");
+        //    var lstGetCount = document.getElementsByClassName("item_count");
             
-            for (i = 0; i < lstGetPrice.length; i++) {
-                alert(lstGetCount[i].value)
-                alert(lstGetPrice[i].value)
-                lstSetPrice[i].innerHTML = Number(lstGetPrice[i].value) * Number(lstGetCount[i].value);
+        //    for (i = 0; i < lstSetPrice.length; i++) {
+        //        lstSetPrice[i].value = Number(lstGetPrice[i].innerText) * Number(lstGetCount[i].value); 
                 
-            }
-        });
+        //    }
+        //});
         function updateCount(Id) {
             var input_value = $("#count_" + Id);
             var count = Number(input_value.val());
@@ -76,6 +85,7 @@
                 success: function (result) {
                     if (result.code == 1) {
                         //alert(result.message)
+                        updatePrice();
                     }
                     else {
                         //alert(result.message)
@@ -97,6 +107,7 @@
                     success: function (result) {
                         if (result.code == 1) {
                             //alert(result.message)
+                            updatePrice();
                         }
                         else {
                             //alert(result.message)
@@ -121,6 +132,7 @@
                     success: function (result) {
                         if (result.code == 1) {
                             //alert(result.message)
+                            updatePrice();
                         }
                         else {
                             //alert(result.message)

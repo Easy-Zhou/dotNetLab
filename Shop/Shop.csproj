@@ -155,8 +155,10 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\ManageUser.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Controllers\AdminUserController.cs" />
     <Compile Include="Areas\admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\admin\Controllers\ProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -415,6 +417,13 @@
     <Content Include="Areas\admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\admin\Views\Category\Add.cshtml" />
     <Content Include="Areas\admin\Views\Category\Update.cshtml" />
+    <Content Include="Areas\admin\Views\Product\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Product\Update.cshtml" />
+    <Content Include="Areas\admin\Views\Product\Add.cshtml" />
+    <Content Include="Areas\admin\Views\AdminUser\Index.cshtml" />
+    <Content Include="Areas\admin\Views\AdminUser\Add.cshtml" />
+    <Content Include="Areas\admin\Views\AdminUser\Update.cshtml" />
+    <Content Include="Areas\admin\Views\AdminUser\Login.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -457,7 +466,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Models\" />
-    <Folder Include="Areas\admin\Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
